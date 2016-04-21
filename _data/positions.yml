@@ -1,0 +1,16 @@
+current:
+  title: Graduate student in mathematics
+  location: Université du Luxembourg & Paris-Est
+  addresses: 
+    - address1:
+      location: Campus Kirchberg
+      street: 6 rue Coudenhove-Kalergi
+      postcode: L-1359 Luxembourg
+      country: Luxembourg
+      office: G102
+    - address2:
+      location: Campus Descartes
+      street: 5 blvd Descartes
+      postcode: 77420 Champs-sur-Marne
+      country: France
+      office: B028

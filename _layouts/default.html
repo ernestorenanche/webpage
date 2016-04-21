@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include head.html %}
+
+  <body>
+    <nav class="navbar">
+      {% include navbar.html %}
+    </nav>
+
+    <section role="main-content" class="main-content">
+      {{ content }}
+    </section>
+    <aside role="author-info" class="contact">
+      <div>
+        {% include side.html %}
+      </div>
+    </aside>
+    <aside class="notice">
+      <p>
+        This site is built using <a href="http://jekyllrb.com/">Jekyll</a> & <a href="http://ethanschoonover.com/solarized">Solarized</a>.
+      </p>
+    </aside>
+
+  </body>
+
+</html>

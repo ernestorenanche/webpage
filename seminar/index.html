@@ -1,0 +1,28 @@
+---
+layout: page
+title: Internal seminar in probability
+permalink: /seminar-probability/
+description: The Luxembourg workshop in probability is a weekly seminar that gather people from the Probability teams for an update and discussion about their findings.
+---
+<ul>
+  {% for seminar in site.seminars reversed %}
+    {% assign speaker = site.data.speakers[seminar.speaker] %}
+    <li>
+      <article>
+        <header>
+          <p>
+            <time datetime="{{ seminar.date }}" class="info">{{ seminar.date | date: "%-d %B %Y" }} at {{ seminar.date | date: "%H:%M" }}</time>
+            by
+            {% if speaker.url %}
+              <a href="{{ speaker.url }}"  rel="author" >{{ speaker.name }}</a>
+            {% else %} 
+              <span rel="author">{{ speaker.name }}</span>
+            {% endif %}
+          </p>
+          <h4>{{ seminar.title }}</h4>
+        </header>
+        {{ seminar.content }}
+      </article>
+    </li>
+  {% endfor %}
+</ul>

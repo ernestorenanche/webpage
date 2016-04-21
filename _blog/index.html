@@ -1,0 +1,23 @@
+---
+layout: page
+title: Blog
+permalink: /blog/
+---
+<ul class="list-unstyled list-group">
+  {% for post in site.posts reversed %}
+    <li>
+      <a href="{{ post.url }}" class="list-group-item">
+        <article>
+          <header class="page-header">
+            <p>
+              <time datetime="{{ post.date }}" class="info">{{ post.date | date: "%-d %B %Y" }}</time> by <span rel="author">R. Herry</span>
+            </p>
+            <h4>{{ post.title }}</h4>
+          </header>
+          {{ post.excerpt }}
+          <p class="text-primary">Read more <span aria-hidden="true">&rarr;</span></p>
+        </article>
+      </a>
+    </li>
+  {% endfor %}
+</ul>

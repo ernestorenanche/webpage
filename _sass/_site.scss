@@ -1,0 +1,247 @@
+//reboot
+*{
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  background-color: inherit;
+  text-decoration: none;
+  list-style-type: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: large;
+  font-family: "Abel";
+  height: inherit;
+  text-align: justify;
+}
+body{
+  overflow: scroll;
+}
+@font-face {
+  font-family: 'Abel';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/Abel-Regular.ttf');
+}
+$pi: 3.1415;
+//colors
+$base03:    #002b36; //dark
+$base02:    #073642;
+$base01:    #586e75;
+$base00:    #657b83;
+$base0:     #839496;
+$base1:     #93a1a1;
+$base2:     #eee8d5;
+$base3:     #fdf6e3; //light
+$yellow:    #b58900;
+$orange:    #cb4b16;
+$red:       #dc322f;
+$magenta:   #d33682;
+$violet:    #6c71c4;
+$blue:      #268bd2;
+$cyan:      #2aa198;
+$green:     #859900;
+
+$text-color: $base01;
+$bg-color: $base3;
+$accent-bg-color: $base2;
+$accent-text-color: $base00;
+$headings-color: $yellow;
+$links-color: $blue;
+$links-hover-color: $magenta;
+$list-separator-color: $base2;
+
+$margin-top: 0;
+$margin-bottom: 0;
+$margin-right: 0;
+$margin-left: 0;
+$padding-top: 2rem;
+$padding-bottom: 2rem;
+$padding-right: 2rem;
+$padding-left: 2rem;
+
+@mixin fixed-on-top($height) {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: $height;
+  margin: $margin-top $margin-right $margin-bottom $margin-left;
+  padding: 0 $padding-right 0 $padding-left;
+  $margin-top: $margin-top + $height !global;
+}
+@mixin fixed-on-bottom($height) {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom:0;
+  height: $height;
+  margin: $margin-top $margin-right $margin-bottom $margin-left;
+  padding: 0 $padding-right 0 $padding-left;
+  $margin-bottom: $margin-bottom + $height !global;
+}
+@mixin fixed-on-right($width) {
+  position: fixed;
+  right: 0;
+  bottom:0;
+  top: 0;
+  width: $width - $padding-left;
+  margin: $margin-top $margin-right $margin-bottom $margin-left;
+  padding: $padding-top 0 $padding-bottom $padding-left;
+  $margin-right: $margin-right + $width !global;
+}
+@mixin vertical-list($height, $padding) {
+  & > * {
+    display: inline-block;
+    * {
+    padding-right: $padding;
+    padding-left: $padding;
+      display: block;
+      line-height: $height;
+    }
+  }
+}
+
+@mixin horizontal-block-list($padding-top, $padding-bottom, $border-color, $border-width){
+  & > * {
+  padding-top: $padding-top;
+}
+& > *:not(:last-child){
+  padding-bottom: $padding-bottom;
+  border-bottom: $border-width solid $list-separator-color;
+  }
+}
+html {
+  background-color: $bg-color;
+}
+
+* {
+  color: $text-color;
+}
+
+h1, h2 {
+  color: $headings-color;
+  font-size: xx-large;
+}
+h3, h4 {
+  color: $green;
+  font-size: x-large;
+}
+time,h5, h6 {
+  color: $violet;
+  font-size: large;
+}
+
+a { @extend .inline-clickable; }
+
+.smaller-headings {
+  h1, h2 {
+    font-size: x-large;
+  }
+  h3, h4, h5, h6 {
+    font-size: large;
+  }
+}
+
+.accentize {
+  background-color: $accent-bg-color;
+  a, p {
+    color: $accent-text-color;
+    a { @extend .inline-clickable; }
+  }
+}
+
+.inline-clickable {
+  color: $links-color;
+  &:hover{
+    color: $links-hover-color;
+  }
+}
+
+$navbar-height: 2rem;
+$navbar-padding: 0.5rem;
+.navbar {
+  @include fixed-on-top($navbar-height);
+  @extend .accentize;
+  ul {
+    @include vertical-list($navbar-height, $navbar-padding);
+    li:not(.active):hover {
+      a {
+        color: $links-hover-color;
+      }
+      background-color: $base1;
+    }
+    .active {
+      background-color: $bg-color;
+      a {
+        color: $text-color;
+      }
+    }
+  }
+}
+
+$notice-height: 2rem;
+.notice {
+  @include fixed-on-bottom($notice-height);
+  @extend .accentize;
+  p {
+    text-align: center;
+  }
+}
+
+$contact-width: 15rem;
+.contact {
+  @extend .accentize;
+  @extend .smaller-headings;
+  @include fixed-on-right($contact-width);
+}
+
+$list-padding-top: 1.5rem;
+ $list-padding-with-separator: 0.5rem;
+ $list-separator-width: 0.1rem;
+.main-content{
+  & > ul {
+    @include horizontal-block-list($list-padding-top, $list-padding-with-separator, $list-separator-color, $list-separator-width);
+  }
+  article ul > li:before {
+    content: "•";
+    padding-right: 0.3rem;
+    color: $text-color;
+  }
+}
+
+//scaffolding
+
+
+.text-center{
+  text-align: center;
+}
+@mixin fixed-on-left($width) {
+  position: fixed;
+  left: 0;
+  bottom:0;
+  top: 0;
+  max-width: $width;
+  margin: $margin-top $margin-right $margin-bottom $margin-left;
+  padding: $padding-top 0 $padding-bottom 0;
+  $margin-right: $margin-right + $width !global;
+}
+
+section.main-content {
+  margin: $margin-top $margin-right $margin-bottom $margin-left;
+  padding: $padding-top $padding-right $padding-bottom $padding-left;
+}
+
+svg {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+circle {
+  fill: $cyan;
+  stroke: $red;
+  stroke-width: 100%;
+  stroke-dasharray: 100 2*$pi*1rem;
+}
+
+// @import "font-awesome";

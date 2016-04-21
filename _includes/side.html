@@ -1,0 +1,17 @@
+{% assign me = site.data.me %}
+{% assign current_position = site.data.positions['current'] %}
+<address>
+  <h1>{{ me.name }}<br><h3>{{ current_position.title }}</h3></h1><br>
+  {% for address in current_position.addresses %}
+    <p>
+      {{ address.location }}<br>
+      Office: {{ address.office }}<br>
+      {{ address.street }}<br>
+      {{ address.postcode }}<br>
+      {{ address.country }}<br><br>
+    </p>
+  {% endfor %}
+  <p><i class="fa fa-envelope-o fa-fw"></i><a href="mailto:{{ me.email }}"> {{ me.email }}</a></p>
+  <p><i class="fa fa-linkedin-square fa-fw"></i> <a href="https://linkedin.com/in/{{ me.linkedin }}/en" target="_blank">{{ me.name }}</a></p>
+  <p><i class="fa fa-twitter fa-fw"></i> <a href="https://twitter.com/{{ me.twitter }}" target="_blank">@{{ me.twitter }}</a></p>
+</address>

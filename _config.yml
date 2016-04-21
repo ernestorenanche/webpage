@@ -1,0 +1,15 @@
+# Site settings
+# favicon: /resumecard/assets/img/avatar.JPG
+baseurl: "/~herry"
+timezone: CET
+description: Ronan Herry homepage.
+
+# Build settings
+markdown: kramdown
+
+exclude: [vendor]
+
+collections:
+  - seminars
+  - teachings
+  - infos

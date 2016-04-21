@@ -1,0 +1,23 @@
+---
+layout: page
+title: Teaching
+permalink: /teaching/
+description: Ronan Herry has been teaching since he started his PhD.
+---
+<ul>
+  {% for teaching in site.teachings reversed %}
+  <li><article>
+      <header>
+        <h4>{{ teaching.title }}</h4>
+        <p>
+        <!-- {% capture nowunix %}{{'now' | date: '%s'}}{% endcapture %} -->
+        <!-- {% capture teachingtime %}{{teaching.date | date: '%s'}}{% endcapture %} -->
+        {{ Date.parse(teaching.date).past? }}
+        Sessions {% if nowunix > teachingtime %}has started{% else %} will start{% endif %} the <time datetime="{{ teaching.date }}" class="info">{{ teaching.date | date: "%-d %B %Y" }}</time>.
+          Sessions usually take place on <time>{{ teaching.date | date: "%A" }}s at {{ teaching.date | date: "%Hh%M" }}</time> and are taught in {{ teaching.language }}.
+        </p>
+      </header>
+      {{ teaching.content }}
+    </article></li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,21 @@
+---
+layout: page
+title: Ronan Herry
+description: Ronan Herry is a PhD student at Université du Luxembourg and Paris-Est with main interests in functonal inequalities and stochastic analysis.
+---
+{% assign me = site.data.me %}
+{% assign positions = site.data.positions %}
+{% assign current_position = positions['current'] %}
+
+<ul>
+  {% for info in site.infos %}
+    <li>
+      <article>
+        <header>
+          <h4>{{ info.title }}</h4>
+        </header>
+        {{ info.content }}
+      </article>
+    </li>
+  {% endfor %}
+</ul>
